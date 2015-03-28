@@ -1,1 +1,1 @@
-some complex data structures
+some complex data structures and algorithms
