@@ -24,8 +24,8 @@ int main(void)
 	link root = NULL;
 	srand(time(NULL));
 	for (i = 0; i < N; i++) {
-		root = insert(root, rand() % RANGE); /* 第一次循环root从NULL变成根节点值，接下去
-												的循环虽然迭代root，但在插入节点过程中root的值始终不变 */
+		root = insert(root, rand() % RANGE); 
+		/* 第一次循环root从NULL变成根节点值，接下去的循环虽然迭代root，但在插入节点过程中root的值始终不变 */
 		printf("root = 0x%x\n", (unsigned int)root);
 	}
 
@@ -37,8 +37,8 @@ int main(void)
 		key = rand() % RANGE;
 		if (search(root, key)) {
 			printf("delete %d in tree\n", key);
-			root = delete(root, key); /* root虽然迭代，但返回的仍是先前的值，即根节点的值保持不变
-										 直到全部节点被删除，root变成NULL即0x0 */
+			root = delete(root, key);
+			/* root虽然迭代，但返回的仍是先前的值，即根节点的值保持不变直到全部节点被删除，root变成NULL即0x0 */
 		    printf("root = 0x%x\n", (unsigned int)root);
 			
 			printf("\t\\tree");
