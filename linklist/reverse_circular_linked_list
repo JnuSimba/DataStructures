@@ -31,7 +31,7 @@ ListNode* ReverseIteratively(ListNode* pHead)
 ///////////////////////////////////////////////////////////////////////////////
 
 其实用链表实现环形队列是最自然的,以前基于数组实现环形队列,我们还需要“假想”它是首尾相接的,而如果基于链表实现环形队列,
-我们本来就可以用指针串成首尾相接的。把oublylinkedlist.c程序改成环形链表(Circular Linked List)也非常简单,只需要
+我们本来就可以用指针串成首尾相接的。把doublylinkedlist.c程序改成环形链表(Circular Linked List)也非常简单,只需要
 把doublylinkedlist.c 中的
 struct node tailsentinel;
 struct node headsentinel = {0, NULL, &tailsentinel};
