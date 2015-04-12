@@ -4,14 +4,14 @@ using namespace std;
 #define MAXSIZE 100
 
 typedef int ElemType;
-/* ÏßĞÔ±íµÄ¾²Ì¬Á´±í´æ´¢½á¹¹ */
+/* çº¿æ€§è¡¨çš„é™æ€é“¾è¡¨å­˜å‚¨ç»“æ„ */
 typedef struct Node
 {
 	ElemType data;
-	int cur; //Îª0Ê±±íÊ¾ÎŞÖ¸Ïò
+	int cur; //ä¸º0æ—¶è¡¨ç¤ºæ— æŒ‡å‘
 } StaticLinkList[MAXSIZE];
 
-/* ½«Ò»Î¬Êı×éarrayÖĞ¸÷·ÖÁ¿Á´³ÉÒ»¸ö±¸ÓÃÁ´±í£¬array[0].curÎªÍ·Ö¸Õë£¬"0"±íÊ¾¿ÕÖ¸Õë */
+/* å°†ä¸€ç»´æ•°ç»„arrayä¸­å„åˆ†é‡é“¾æˆä¸€ä¸ªå¤‡ç”¨é“¾è¡¨ï¼Œarray[0].curä¸ºå¤´æŒ‡é’ˆï¼Œ"0"è¡¨ç¤ºç©ºæŒ‡é’ˆ */
 bool InitList(StaticLinkList array)
 {
 	cout<<"InitList..."<<endl;
@@ -20,25 +20,25 @@ bool InitList(StaticLinkList array)
 		array[i].cur = i + 1;
 	}
 
-    array[MAXSIZE - 2].cur = 0;  /* ×îºóÒ»¸öÔªËØÒ²ÊÇ²»¿ÉÓÃµÄ£¬µ¹ÊıµÚ¶ş¸öÔªËØµÄcurÎª0 */
-	array[MAXSIZE - 1].cur = 0;/* Ä¿Ç°¾²Ì¬Á´±íÎª¿Õ£¬×îºóÒ»¸öÔªËØµÄcurÎª0 */
+        array[MAXSIZE - 2].cur = 0;  /* æœ€åä¸€ä¸ªå…ƒç´ ä¹Ÿæ˜¯ä¸å¯ç”¨çš„ï¼Œå€’æ•°ç¬¬äºŒä¸ªå…ƒç´ çš„curä¸º0 */
+	array[MAXSIZE - 1].cur = 0;/* ç›®å‰é™æ€é“¾è¡¨ä¸ºç©ºï¼Œæœ€åä¸€ä¸ªå…ƒç´ çš„curä¸º0 */
 
 	return true;
 }
-/* Èô±¸ÓÃ¿Õ¼äÁ´±í·Ç¿Õ£¬Ôò·µ»Ø·ÖÅäµÄ½áµãÏÂ±ê£¬·ñÔò·µ»Ø0 */
+/* è‹¥å¤‡ç”¨ç©ºé—´é“¾è¡¨éç©ºï¼Œåˆ™è¿”å›åˆ†é…çš„ç»“ç‚¹ä¸‹æ ‡ï¼Œå¦åˆ™è¿”å›0 */
 int Malloc_SLL(StaticLinkList array)
 {
 	int k = array[0].cur;
 	if (k)
-		array[0].cur = array[k].cur;/* ÏÂÒ»¸ö·ÖÁ¿ÓÃÀ´×ö±¸ÓÃ */
+		array[0].cur = array[k].cur;/* ä¸‹ä¸€ä¸ªåˆ†é‡ç”¨æ¥åšå¤‡ç”¨ */
 
 	return k;
 }
-/*  ½«ÏÂ±êÎªposµÄ¿ÕÏĞ½áµã»ØÊÕµ½±¸ÓÃÁ´±í */
+/*  å°†ä¸‹æ ‡ä¸ºposçš„ç©ºé—²ç»“ç‚¹å›æ”¶åˆ°å¤‡ç”¨é“¾è¡¨ */
 void Free_SLL(StaticLinkList array, int pos)
 {
-	array[pos].cur = array[0].cur; /* °ÑµÚÒ»¸öÔªËØµÄcurÖµ¸³¸øÒªÉ¾³ıµÄ·ÖÁ¿cur */
-	array[0].cur = pos;	/* °ÑÒªÉ¾³ıµÄ·ÖÁ¿ÏÂ±ê¸³Öµ¸øµÚÒ»¸öÔªËØµÄcur */
+	array[pos].cur = array[0].cur; /* æŠŠç¬¬ä¸€ä¸ªå…ƒç´ çš„curå€¼èµ‹ç»™è¦åˆ é™¤çš„åˆ†é‡cur */
+	array[0].cur = pos;	/* æŠŠè¦åˆ é™¤çš„åˆ†é‡ä¸‹æ ‡èµ‹å€¼ç»™ç¬¬ä¸€ä¸ªå…ƒç´ çš„cur */
 }
 
 int ListLength(StaticLinkList array)
@@ -52,7 +52,7 @@ int ListLength(StaticLinkList array)
 	}
 	return j;
 }
-/*  ÔÚLÖĞµÚpos¸öÔªËØÖ®Ç°²åÈëĞÂµÄÊı¾İÔªËØElem  */
+/*  åœ¨Lä¸­ç¬¬posä¸ªå…ƒç´ ä¹‹å‰æ’å…¥æ–°çš„æ•°æ®å…ƒç´ Elem  */
 bool ListInsert(StaticLinkList array, int pos, ElemType Elem)
 {
 	cout<<"Insert List from pos: "<<pos<<" Item "<<Elem<<endl;
@@ -60,7 +60,7 @@ bool ListInsert(StaticLinkList array, int pos, ElemType Elem)
 		return false;
 	
 	int k = MAXSIZE - 1;
-	int i = Malloc_SLL(array); /* »ñµÃ¿ÕÏĞ·ÖÁ¿µÄÏÂ±ê */
+	int i = Malloc_SLL(array); /* è·å¾—ç©ºé—²åˆ†é‡çš„ä¸‹æ ‡ */
 	
 	if (i)
 	{
@@ -69,14 +69,14 @@ bool ListInsert(StaticLinkList array, int pos, ElemType Elem)
 		for (int l = 1; l <= pos - 1; l++)
 			k = array[k].cur;
 
-		array[i].cur = array[k].cur;/* °ÑµÚpos¸öÔªËØÖ®Ç°µÄcur¸³Öµ¸øĞÂÔªËØµÄcur */
-		array[k].cur = i;/* °ÑĞÂÔªËØµÄÏÂ±ê¸³Öµ¸øµÚpos¸öÔªËØÖ®Ç°ÔªËØµÄcur */
+		array[i].cur = array[k].cur;/* æŠŠç¬¬posä¸ªå…ƒç´ ä¹‹å‰çš„curèµ‹å€¼ç»™æ–°å…ƒç´ çš„cur */
+		array[k].cur = i;/* æŠŠæ–°å…ƒç´ çš„ä¸‹æ ‡èµ‹å€¼ç»™ç¬¬posä¸ªå…ƒç´ ä¹‹å‰å…ƒç´ çš„cur */
 		return true;
 	}
 	
 	return false;
 }
-/*  É¾³ıÔÚarrayÖĞµÚpos¸öÊı¾İÔªËØ   */
+/*  åˆ é™¤åœ¨arrayä¸­ç¬¬posä¸ªæ•°æ®å…ƒç´    */
 bool ListDelete(StaticLinkList array, int pos)
 {
 	cout<<"Delete List from pos: "<<pos<<endl;
