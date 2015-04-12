@@ -64,7 +64,7 @@ link delete(link t, unsigned char key)
 			else if (t->left) {/* if t has left subtree */
 				/* replace t with the rightmost node in left subtree */
 				for (p = t->left; p->right; p = p->right);
-				t->item = p->item; 
+				t->item = p->item; /* 将左子树下最靠右的节点值赋予想要删除的节点 */
 		 		t->left = delete(t->left, t->item); 
 			} 
 		
